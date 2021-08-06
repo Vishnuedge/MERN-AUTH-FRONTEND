@@ -35,6 +35,7 @@ export default function ForgotPassword() {
 
   return (
     <>
+      {/*     
       <form className="forgot-parent" onSubmit={handleReset}>
         <div className="card forgot-card">
           {error && <div className="error">{error}</div>}
@@ -64,7 +65,33 @@ export default function ForgotPassword() {
             </div>
           </div>
         </div>
-      </form>
+      </form> */}
+      <div className="forgotpassword-screen">
+        <form onSubmit={handleReset} className="forgotpassword-screen__form">
+          <h3 className="forgotpassword-screen__title">Forgot Password</h3>
+          {error && <div className="error">{error}</div>}
+          {success && <div className="success">{success}</div>}
+          <div className="form-group">
+            <p className="forgotpassword-screen__subtext">
+              Please enter the email address you register your account with. We
+              will send you reset password confirmation to this email
+            </p>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
+          <br />
+          <div className="text-center">
+            <button type="submit" className="btn btn-dark">
+              Send Email
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

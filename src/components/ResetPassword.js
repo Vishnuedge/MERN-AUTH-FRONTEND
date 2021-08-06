@@ -47,7 +47,7 @@ export default function ResetPassword({ match }) {
 
   return (
     <>
-      <form className="reset-parent" onSubmit={changePassword}>
+      {/* <form className="reset-parent" onSubmit={changePassword}>
         <div className="card reset-card">
           {error && <div className="error">{error}</div>}
           {success && (
@@ -69,7 +69,6 @@ export default function ResetPassword({ match }) {
             />
             <br />
 
-            {/* CONFIRM PASSWORD */}
             <p>Confirm New Password : </p>
             <input
               type="text"
@@ -86,7 +85,45 @@ export default function ResetPassword({ match }) {
             </div>
           </div>
         </div>
-      </form>
+      </form> */}
+
+      <div className="resetpassword-screen">
+        <form onSubmit={changePassword} className="resetpassword-screen__form">
+          <h3 className="resetpassword-screen__title">Forgot Password</h3>
+          {error && <div className="error">{error}</div>}
+          {success && (
+            <div className="success">
+              {success}
+              <Link to="/login">LOGIN</Link>
+            </div>
+          )}
+          <div className="form-group">
+            <label htmlFor="password">New Password:</label>
+            <input
+              type="text"
+              class="form-control"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <br />
+          </div>
+          <div className="form-group">
+            <label htmlFor="confirmpassword">Confirm New Password:</label>
+            <input
+              type="text"
+              class="form-control"
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
+            />
+            <br />
+          </div>
+          <div className="text-center">
+            <button type="submit" className="btn btn-dark">
+              Reset Password
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }
