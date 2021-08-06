@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -19,6 +19,7 @@ import {
 } from 'react-router-dom';
 
 export default function App() {
+  const [page, setPage] = useState('');
   return (
     <div className="outer">
       <BrowserRouter>

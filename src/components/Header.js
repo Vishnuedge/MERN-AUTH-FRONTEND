@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -28,8 +28,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Header() {
+export default function Header(props) {
   const classes = useStyles();
+  const path = window.location.pathname;
 
   return (
     <div className={classes.root}>
@@ -44,11 +45,16 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            INVOICE
+            OUTDOOR
           </Typography>
 
-          <Link to="/signup">
-            <Button className={classes.colorButton}>Signup</Button>
+          <Link
+            to={path === '/signup' ? '/login' : '/signup'}
+            className="signupButton"
+          >
+            <Button className="header-button">
+              {path === '/signup' ? 'LOGIN' : 'SIGNUP'}
+            </Button>
           </Link>
         </Toolbar>
       </AppBar>
